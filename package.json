@@ -2,7 +2,7 @@
   "name": "gsg-element-boilerplate",
   "version": "0.0.1",
   "description": "A starting point for gsg reusable React elements.",
-  "main": "src/index.js",
+  "main": "dist/index.min.js",
   "scripts": {
     "dist:clean": "rimraf dist",
     "eg:clean": "rimraf examples/dist",
