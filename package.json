@@ -2,12 +2,14 @@
   "name": "gsg-element-boilerplate",
   "version": "0.0.1",
   "description": "A starting point for gsg reusable React elements.",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "dist:clean": "rimraf dist",
+    "eg:clean": "rimraf examples/dist",
     "coverage:clean": "rimraf coverage",
     "bundle": "npm run dist:clean && webpack -d --watch",
     "build": "npm run dist:clean && webpack -p",
+    "build:eg": "cd examples && npm run eg:clean && webpack -p",
     "lint": "eslint src",
     "lint:fix": "eslint --fix src",
     "test": "jest"
@@ -34,6 +36,7 @@
     "react-dom": "^15.4.1"
   },
   "devDependencies": {
+    "autoprefixer": "^6.5.3",
     "babel-cli": "^6.18.0",
     "babel-core": "^6.18.2",
     "babel-eslint": "^7.1.1",
@@ -52,6 +55,7 @@
     "json-loader": "^0.5.4",
     "postcss-cli": "^2.6.0",
     "postcss-loader": "^1.1.1",
+    "precss": "^1.4.0",
     "rimraf": "^2.5.4",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
