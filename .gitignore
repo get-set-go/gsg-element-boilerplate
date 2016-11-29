@@ -27,6 +27,7 @@ coverage
 build/Release
 jest
 dist
+*.min.js
 
 # Dependency directories
 node_modules
