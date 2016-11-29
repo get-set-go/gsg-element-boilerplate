@@ -4,7 +4,13 @@
   "description": "A starting point for gsg reusable React elements.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dist:clean": "rimraf dist",
+    "coverage:clean": "rimraf coverage",
+    "bundle": "npm run dist:clean && webpack -d --watch",
+    "build": "npm run dist:clean && webpack -p",
+    "lint": "eslint src",
+    "lint:fix": "eslint --fix src",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
