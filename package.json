@@ -7,9 +7,9 @@
     "dist:clean": "rimraf dist",
     "eg:clean": "rimraf examples/dist",
     "coverage:clean": "rimraf coverage",
-    "bundle": "npm run dist:clean && webpack -d --watch",
-    "build": "npm run dist:clean && webpack -p",
-    "build:eg": "cd examples && npm run eg:clean && webpack -p",
+    "bundle": "npm run dist:clean && webpack --progress -d --watch",
+    "build": "npm run dist:clean && webpack --progress -p",
+    "build:eg": "cd examples && npm run eg:clean && webpack --progress -p",
     "lint": "eslint src",
     "lint:fix": "eslint --fix src",
     "test": "jest"
@@ -61,5 +61,13 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.3"
+  },
+  "peerDependencies": {
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1"
+  },
+  "externals": {
+    "react": "React",
+    "react-dom": "ReactDOM"
   }
 }
