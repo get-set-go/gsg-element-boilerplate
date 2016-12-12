@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import HelloWorld from '../src';
+import HelloWorld from '../dist/index.min';
 
 ReactDOM.render(
   <div>

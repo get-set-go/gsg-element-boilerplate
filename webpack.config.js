@@ -1,6 +1,7 @@
 'use strict';
 
 var webpack = require('webpack');
+var path = require('path');
 var product = require('./package.json');
 
 var banner = product.name + " v" + product.version;
@@ -8,11 +9,17 @@ banner += "\nDeveloped & maintained by " + product.author + " and contributors."
 banner += "\nMIT Licensed"
 
 var config = {
-  entry: './src/index.js',
+  entry: path.join(__dirname, 'src', 'index.js'),
 
   output: {
-    path: './dist/',
-    filename: 'index.min.js'
+    path: path.join(__dirname, 'dist'),
+    filename: 'index.min.js',
+    libraryTarget: 'umd'
+  },
+
+  externals: {
+    'react': 'react',
+    'react-dom': 'react-dom'
   },
 
   module: {

@@ -1,13 +1,20 @@
 'use strict';
 
 var webpack = require('webpack');
+var path = require('path');
 
 var config = {
-  entry: './index.js',
+  entry: path.join(__dirname, 'index.js'),
 
   output: {
+    path: path.join(__dirname, 'dist'),
     filename: 'index.min.js'
   },
+
+  // externals: {
+  //   'react': 'React',
+  //   'react-dom': 'ReactDOM'
+  // },
 
   module: {
     loaders: [{
