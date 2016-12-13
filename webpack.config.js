@@ -32,15 +32,14 @@ var config = {
       }
     }, {
       test: /\.css$/,
-      loader: 'style-loader!css-loader!postcss-loader'
+      loader: 'style-loader!css-loader'
+    }, {
+      test: /\.less$/,
+      loader: 'style-loader!css-loader!less-loader'
     }, {
       test: /\.json$/,
       loader: 'json-loader'
     }]
-  },
-
-  postcss: function() {
-    return [require('autoprefixer'), require('precss')];
   },
 
   plugins: [

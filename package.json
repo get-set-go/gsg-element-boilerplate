@@ -1,6 +1,6 @@
 {
   "name": "gsg-element-boilerplate",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A starting point for gsg reusable React elements.",
   "main": "dist/index.min.js",
   "scripts": {
@@ -8,12 +8,14 @@
     "eg:clean": "rimraf examples/dist",
     "coverage:clean": "rimraf coverage",
     "bundle": "npm run dist:clean && webpack --progress -d --watch",
+    "bundle:eg": "npm run eg:clean && webpack --config \"./examples/webpack.config.js\" --progress -d --watch",
     "build": "npm run dist:clean && cross-env NODE_ENV=production webpack --progress -p -d",
     "build:eg": "npm run eg:clean && cross-env NODE_ENV=production webpack --config \"./examples/webpack.config.js\" --progress -p -d",
+    "build:prod": "npm run build && npm run build:eg",
     "lint": "eslint src",
     "lint:fix": "eslint --fix src",
     "test": "jest",
-    "postinstall": "npm run build"
+    "postinstall": "npm run build:prod"
   },
   "repository": {
     "type": "git",
@@ -55,9 +57,8 @@
     "jest": "^17.0.3",
     "jest-cli": "^17.0.3",
     "json-loader": "^0.5.4",
-    "postcss-cli": "^2.6.0",
-    "postcss-loader": "^1.1.1",
-    "precss": "^1.4.0",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
     "react-addons-test-utils": "^15.4.1",
     "rimraf": "^2.5.4",
     "style-loader": "^0.13.1",
