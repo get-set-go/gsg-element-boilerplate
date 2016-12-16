@@ -1,6 +1,6 @@
 {
   "name": "gsg-element-boilerplate",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A starting point for gsg reusable React elements.",
   "main": "dist/index.min.js",
   "scripts": {
@@ -68,5 +68,23 @@
   "peerDependencies": {
     "react": "^15.4.1",
     "react-dom": "^15.4.1"
+  },
+  "jest": {
+    "transform": {
+      ".*": "./jest.preprocessor.conf"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "jsx"
+    ],
+    "collectCoverage": true,
+    "transformIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "unmockedModulePathPatterns": [
+      "react",
+      "react-dom"
+    ]
   }
 }
