@@ -6,6 +6,7 @@
   "scripts": {
     "dist:clean": "rimraf dist",
     "eg:clean": "rimraf examples/dist",
+    "test:clean": "rimraf jest",
     "coverage:clean": "rimraf coverage",
     "bundle": "npm run dist:clean && webpack --progress -d --watch",
     "bundle:eg": "npm run eg:clean && webpack --config \"./examples/webpack.config.js\" --progress -d --watch",
@@ -14,7 +15,7 @@
     "build:prod": "npm run build && npm run build:eg",
     "lint": "eslint src",
     "lint:fix": "eslint --fix src",
-    "test": "jest",
+    "test": "npm run test:clean && npm run coverage:clean && jest",
     "postinstall": "npm run build:prod"
   },
   "repository": {
@@ -59,6 +60,7 @@
     "json-loader": "^0.5.4",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
+    "pre-commit": "^1.2.2",
     "react-addons-test-utils": "^15.4.1",
     "rimraf": "^2.5.4",
     "style-loader": "^0.13.1",
@@ -69,6 +71,11 @@
     "react": "^15.4.1",
     "react-dom": "^15.4.1"
   },
+  "pre-commit": [
+    "lint",
+    "lint:fix",
+    "test"
+  ],
   "jest": {
     "transform": {
       ".*": "./jest.preprocessor.conf"
