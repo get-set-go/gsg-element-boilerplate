@@ -1,22 +1,20 @@
 {
   "name": "gsg-element-boilerplate",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A starting point for gsg reusable React elements.",
   "main": "dist/index.min.js",
   "scripts": {
-    "dist:clean": "rimraf dist",
-    "eg:clean": "rimraf examples/dist",
-    "test:clean": "rimraf jest",
-    "coverage:clean": "rimraf coverage",
-    "bundle": "npm run dist:clean && webpack --progress -d --watch",
-    "bundle:eg": "npm run eg:clean && webpack --config \"./examples/webpack.config.js\" --progress -d --watch",
-    "build": "npm run dist:clean && cross-env NODE_ENV=production webpack --progress -p -d",
-    "build:eg": "npm run eg:clean && cross-env NODE_ENV=production webpack --config \"./examples/webpack.config.js\" --progress -p -d",
-    "build:prod": "npm run build && npm run build:eg",
-    "lint": "eslint src",
-    "lint:fix": "eslint --fix src",
-    "test": "npm run test:clean && npm run coverage:clean && jest",
-    "postinstall": "npm run build:prod"
+    "serve:dev": "webpack-dev-server --config \"./configs/build/dev.webpack.config.js\" --content-base src/ --progress -d --watch",
+    "serve:dev:hot": "yarn run serve:dev -- --inline --hot",
+    "serve:prod": "webpack-dev-server --config \"./configs/build/prod.webpack.config.js\" --content-base src/ --progress",
+    "clean:dist": "rimraf dist",
+    "clean:coverage": "rimraf coverage",
+    "bundle:watch": "yarn run clean:dist && webpack --config \"./configs/build/dev.webpack.config.js\" --progress -d --watch",
+    "bundle:dev": "yarn run clean:dist && webpack --config \"./configs/build/dev.webpack.config.js\" --progress -p -d",
+    "build": "yarn run clean:dist && yarn run lint && yarn run test && webpack --config \"./configs/build/prod.webpack.config.js\" --progress -p",
+    "test": "yarn run clean:coverage && jest --bail --verbose --coverage",
+    "lint": "eslint config src",
+    "lint:fix": "eslint --fix config src"
   },
   "repository": {
     "type": "git",
@@ -27,7 +25,7 @@
     "Components",
     "Bootstrap"
   ],
-  "author": "Ashwin Hegde",
+  "author": "Ashwin Hegde <ashwin.hegde3@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/get-set-go/gsg-element-boilerplate/issues"
@@ -46,6 +44,7 @@
     "babel-eslint": "^7.1.1",
     "babel-jest": "^17.0.2",
     "babel-loader": "^6.2.8",
+    "babel-plugin-transform-runtime": "^6.22.0",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-0": "^6.16.0",
@@ -60,25 +59,20 @@
     "json-loader": "^0.5.4",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
-    "pre-commit": "^1.2.2",
     "react-addons-test-utils": "^15.4.1",
     "rimraf": "^2.5.4",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "^1.13.3"
+    "webpack": "^1.13.3",
+    "webpack-merge": "^2.6.0"
   },
   "peerDependencies": {
     "react": "^15.4.1",
     "react-dom": "^15.4.1"
   },
-  "pre-commit": [
-    "lint",
-    "lint:fix",
-    "test"
-  ],
   "jest": {
     "transform": {
-      ".*": "./jest.preprocessor.conf"
+      ".*": "./configs/test/jest.preprocessor.config"
     },
     "moduleFileExtensions": [
       "js",
